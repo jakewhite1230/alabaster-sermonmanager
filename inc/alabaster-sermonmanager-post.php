@@ -38,7 +38,7 @@ function alabaster_sermonmanager() {
         'capability_type' => 'post'
     );
 
-    register_post_type( 'alabaster-sermons', $args );
+    register_post_type( 'sermons', $args );
 }
 
 add_action( 'init', 'alabaster_sermonmanager' );
