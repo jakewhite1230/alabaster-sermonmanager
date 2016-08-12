@@ -1,11 +1,11 @@
 <?php
 add_action( 'add_meta_boxes', 'date_field' );
 function date_field() {
-    add_meta_box( 
+    add_meta_box(
         'date_field',
         __( 'Sermon Date', 'myplugin_textdomain' ),
         'date_field_content',
-        'alabaster-sermons',
+        'sermons',
         'normal',
         'high'
     );
@@ -14,7 +14,7 @@ function date_field() {
 function date_field_content( $post ) {
   // Enqueue Datepicker + jQuery UI CSS
 
-wp_nonce_field( basename( __FILE__ ), 'sermon_date_nonce' ); 
+wp_nonce_field( basename( __FILE__ ), 'sermon_date_nonce' );
 wp_enqueue_script( 'jquery-ui-datepicker' );
 wp_enqueue_style( 'jquery-ui-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/smoothness/jquery-ui.css', true);
 

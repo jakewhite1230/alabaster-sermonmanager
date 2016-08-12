@@ -57,8 +57,8 @@ add_shortcode('alabaster_sermonmanager_sermons', 'alabaster_sermonmanager_sermon
 add_filter( 'the_content', 'my_the_content_filter', 20 );
 function my_the_content_filter( $content ) {
 
-    if ( is_singular( 'alabaster-sermons' ) ){
-      
+    if ( is_singular( 'sermons' ) ){
+
     	$sermonDate = get_custom_field("sermon_date");
     	$sermonSpeaker = get_the_term_list($post->ID, 'speakers');
     	$sermonSeries = get_the_term_list($post->ID, 'series');

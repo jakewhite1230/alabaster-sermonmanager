@@ -3,7 +3,7 @@
 
 		<?php
 
-			$args = array('post_type' => 'alabaster-sermons');
+			$args = array('post_type' => 'sermons');
 			$the_query = new WP_Query($args);
 			if($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
 			 $thumbnail_src = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
@@ -31,5 +31,3 @@
 	<?php endwhile; else: ?>
 		<p>There are no sermons.</p>
 	<?php endif; ?>
-			
-

@@ -5,12 +5,12 @@ $style_options = array();
 
 function add_settings_page() {
     $page = add_submenu_page(
-        'edit.php?post_type=alabaster-sermons', 
-        'Options', 
-        'Settings', 
-        'manage_options', 
-        'sermon-options', 
-        'alabaster_sermonmanager_options_page' ); 
+        'edit.php?post_type=sermons', 
+        'Options',
+        'Settings',
+        'manage_options',
+        'sermon-options',
+        'alabaster_sermonmanager_options_page' );
 
         add_action('admin_print_styles-' . $page, 'alabaster_sermonmanager_admin_styles_and_scripts');
 

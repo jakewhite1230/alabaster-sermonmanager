@@ -1,11 +1,11 @@
 <?php
 add_action( 'add_meta_boxes', 'audio_upload' );
 function audio_upload() {
-    add_meta_box( 
+    add_meta_box(
         'audio_upload',
         __( 'Sermon Audio', 'prfx-textdomain' ),
         'audio_upload_content',
-        'alabaster-sermons',
+        'sermons',
         'normal',
         'high'
     );
@@ -14,11 +14,11 @@ function audio_upload() {
 function audio_upload_content( $post ) {
   // Enqueue Datepicker + jQuery UI CSS
 
-wp_nonce_field( basename( __FILE__ ), 'sermon_audio_nonce' ); 
+wp_nonce_field( basename( __FILE__ ), 'sermon_audio_nonce' );
 
 $prfx_stored_meta = get_post_meta( $post->ID );
     ?>
- 
+
    <p>
     <label for="sermon-audio-upload" class="prfx-row-title"><?php _e( 'Audio File Link', 'prfx-textdomain' )?></label>
     <input type="text" name="sermon-audio-upload" id="sermon-audio-upload" value="<?php if ( isset ( $prfx_stored_meta['sermon-audio-upload'] ) ) echo $prfx_stored_meta['sermon-audio-upload'][0]; ?>" />
@@ -63,7 +63,7 @@ jQuery(document).ready(function() {
                 });
             });
 </script>
- 
+
     <?php
 
 
@@ -76,7 +76,7 @@ function prfx_image_enqueue() {
     global $typenow;
     if( $typenow == 'sermons' ) {
         wp_enqueue_media();
- 
+
         // Registers and enqueues the required javascript.
         wp_register_script( 'meta-box-image', plugin_dir_url( __FILE__ ) . 'alabaster-sermonmanager-audio-upload.js' , array( 'jquery' ), '1.0.0', true );
         wp_localize_script( 'meta-box-image', 'meta_image',
@@ -95,29 +95,29 @@ add_action( 'admin_enqueue_scripts', 'prfx_image_enqueue' );
 
 
 function prfx_meta_save( $post_id ) {
- 
+
     // Checks save status
     $is_autosave = wp_is_post_autosave( $post_id );
     $is_revision = wp_is_post_revision( $post_id );
     $is_valid_nonce = ( isset( $_POST[ 'sermon_audio_nonce' ] ) && wp_verify_nonce( $_POST[ 'sermon_date_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
- 
+
     // Exits script depending on save status
     if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
         return;
     }
- 
-    
+
+
     // Checks for input and saves if needed
 if( isset( $_POST[ 'sermon-audio-upload' ] ) ) {
 
 $audioFile = $_POST[ 'sermon-audio-upload'];
 if (strpos($audioFile,'?dl=1') !== false) {
     update_post_meta( $post_id, 'sermon-audio-upload', $audioFile );
-    
+
 } else if(strpos($audioFile, 'https://www.dropbox.com') == true) {
     $audioFile = $_POST[ 'sermon-audio-upload'] . '?dl=1';
     update_post_meta( $post_id, 'sermon-audio-upload', $audioFile );
-} //else if(strpos($audioFile, 'https://soundcloud.com') !== false){ 
+} //else if(strpos($audioFile, 'https://soundcloud.com') !== false){
    // include('soundcloud-convert-test.php');
    // update_post_meta( $post_id, 'sermon-audio-upload', $audioFile );
 //}
@@ -129,6 +129,6 @@ else{
 
 
 }
- 
+
 }
 add_action( 'save_post', 'prfx_meta_save' );
