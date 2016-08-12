@@ -1,22 +1,22 @@
-<?php 
+<?php
 
 function alabaster_sermonmanager() {
- 
+
     $labels = array(
-        'name' => _x( 'Sermons', 'alabaster-sermons' ),
-        'singular_name' => _x( 'Sermon', 'alabaster-sermon' ),
+        'name' => _x( 'Sermons', 'sermons' ),
+        'singular_name' => _x( 'Sermon', 'sermon' ),
         'add_new' => _x( 'Add New', 'alabaster-sermon' ),
-        'add_new_item' => _x( 'Add New Sermon', 'alabaster-sermon' ),
-        'edit_item' => _x( 'Edit Sermon', 'alabaster-sermon' ),
-        'new_item' => _x( 'New Sermon', 'alabaster-sermon' ),
-        'view_item' => _x( 'View Sermon', 'alabaster-sermon' ),
-        'search_items' => _x( 'Search Sermons', 'alabaster-sermon' ),
-        'not_found' => _x( 'No sermons found', 'alabaster-sermon' ),
-        'not_found_in_trash' => _x( 'No sermons found in Trash', 'alabaster-sermon' ),
-        'parent_item_colon' => _x( 'Parent Sermon:', 'alabaster-sermon' ),
-        'menu_name' => _x( 'Sermons', 'alabaster-sermon' ),
+        'add_new_item' => _x( 'Add New Sermon', 'sermon' ),
+        'edit_item' => _x( 'Edit Sermon', 'sermon' ),
+        'new_item' => _x( 'New Sermon', 'sermon' ),
+        'view_item' => _x( 'View Sermon', 'sermon' ),
+        'search_items' => _x( 'Search Sermons', 'sermon' ),
+        'not_found' => _x( 'No sermons found', 'sermon' ),
+        'not_found_in_trash' => _x( 'No sermons found in Trash', 'sermon' ),
+        'parent_item_colon' => _x( 'Parent Sermon:', 'sermon' ),
+        'menu_name' => _x( 'Sermons', 'sermon' ),
     );
- 
+
     $args = array(
         'labels' => $labels,
         'hierarchical' => true,
@@ -37,9 +37,8 @@ function alabaster_sermonmanager() {
         'rewrite' => true,
         'capability_type' => 'post'
     );
- 
+
     register_post_type( 'alabaster-sermons', $args );
 }
- 
-add_action( 'init', 'alabaster_sermonmanager' );
 
+add_action( 'init', 'alabaster_sermonmanager' );
