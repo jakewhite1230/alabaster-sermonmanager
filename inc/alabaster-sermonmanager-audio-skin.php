@@ -1,5 +1,9 @@
-
 <?php
+$audioFile = get_custom_field('sermon-audio-upload');
+if(strpos($audioFile, 'https://api.soundcloud.com') !== false){
+	include('alabaster-sermonmanager-audio-soundcloud.php');
+}
+
 $style_options = get_option('alabaster-sermonmanager-options');
 if($style_options != '' ){
             $seekbar_style = $style_options['alabaster-sermonmanager-seekbar-color'];
@@ -8,20 +12,20 @@ if($style_options != '' ){
  }
 
 	$audio = "<audio  id='alabaster-sermoncontrol-audio'>";
-	$audio = $audio . "<source id='alabaster-sermoncontrol-audioSource' src='" . get_custom_field('meta-image') . "' type='audio/mp3'/>Your browser does not support the audio element. Please update browser.";
+	$audio = $audio . "<source id='alabaster-sermoncontrol-audioSource' src='" . $audioFile . "' type='audio/mp3'/>Your browser does not support the audio element. Please update browser.";
 	$audio = $audio . "</audio>";
 	$audio = $audio . "<div id='alabaster-sermoncontrol-audio-controls' style='background:" . $dock_color_style ."' class='clearfix'>";
 	$audio = $audio . "<div class='alabaster-sermoncontrol-audio-container'>";
 	$audio = $audio . "<button type='button' style='color:". $button_color_style ."' id='alabaster-sermoncontrol-audio-play' class='glyphicon glyphicon-play'></button>";
 	$audio = $audio . "<div class='seekbar clearfix'>";
-	$audio = $audio . "<p id='alabaster-sermoncontrol-audio-currentTime'>00:00:00</p>";
+	$audio = $audio . "<p style='color:". $button_color_style ."' id='alabaster-sermoncontrol-audio-currentTime'>00:00:00</p>";
 	$audio = $audio . "<input type='range' style='background:" . $seekbar_style ."' id='alabaster-sermoncontrol-audio-seekbar' value='0'>";
-	$audio = $audio . "<p id='alabaster-sermoncontrol-audio-duration'>00:00:00</p>";
+	$audio = $audio . "<p style='color:". $button_color_style ."' id='alabaster-sermoncontrol-audio-duration'>00:00:00</p>";
 	$audio = $audio . "</div>";
 	$audio = $audio . "<a href='https://www.facebook.com/sharer/sharer.php?u=". get_permalink() . "' target='_blank'>";
 	$audio = $audio . "<button type='button' style='color:". $button_color_style ."' id='alabaster-sermoncontrol-audio-share' class='glyphicon glyphicon-share pull-right'></button>";
 	$audio = $audio . "</a>";
-	$audio = $audio . "<a href='" . get_custom_field('meta-image') . "' download>";
+	$audio = $audio . "<a id='alabaster-sermoncontrol-audio-download-link' href='" . get_custom_field('sermon-audio-upload') . "'>";
 	$audio = $audio . "<button type='button' style='color:". $button_color_style ."' id='alabaster-sermoncontrol-audio-download' class='glyphicon glyphicon-download hidden-xs pull-right'></button>";
 	$audio = $audio . "</a>";
 	$audio = $audio . "</div>";
@@ -29,25 +33,6 @@ if($style_options != '' ){
 
 
 ?>
-
-<!-- <script type="text/javascript">
-	jQuery(document).ready(function($){
-
-
-		window.onload = function(){
-			var source = $('#alabaster-sermoncontrol-audioSource').attr('src');
-			var source = source + '?dl=1';
-			console.log(source);
-			audio.load();
-		}
-
-	});
-
-
-</script> -->
-
-
-
 <style type="text/css">
 
 .pageHeader h1{
@@ -176,28 +161,6 @@ if($style_options != '' ){
   	position: relative;
 
 }
-
-
-/*
-
-#alabaster-sermoncontrol-audio-volume{
-  width: 75px;
-  height: 10px;
-  padding: 0px;
-  position: relative;
-  z-index: 100;
-  border-radius: 15px;
-  margin: 0px;
-  background: #DC3522;
-  top: -45px;
- 
-  -webkit-transform:rotate(270deg); 
-     -moz-transform:rotate(270deg); 
-     -o-transform:rotate(270deg); 
-     -ms-transform:rotate(270deg); 
-     transform:rotate(270deg); 
-}
-*/
 
 @media(max-width: 991px){
 	#alabaster-sermoncontrol-audio-seekbar{

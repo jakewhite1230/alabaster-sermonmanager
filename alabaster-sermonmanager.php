@@ -32,15 +32,17 @@ include('inc/alabaster-sermonmanager-date-selector.php');
 /* Create the settings page for the Alabaster Sermon Manager Plugin) */
 include('inc/alabaster-sermonmanager-settings.php');
 
-include('inc/alabaster-sermonmanager-taxonomy-image.php'); 
+include('inc/alabaster-sermonmanager-taxonomy-series-image.php'); 
+include('inc/alabaster-sermonmanager-taxonomy-speaker-image.php'); 
 
 include('inc/alabaster-sermonmanager-shortcodes.php');
 
 function alabaster_sermonmanager_frontend_styles_and_scripts(){
-	wp_enqueue_style('alabaster_sermonmanager_frontend_css', plugins_url('alabaster-sermonmanager/css/bootstrap.min.css'));
-	wp_enqueue_script('alabaster_sermonmanager_frontend_js', plugins_url('alabaster-sermonmanager/js/bootstrap.min.js'), array('jquery'), '', true);
+	wp_enqueue_style('alabaster_sermonmanager_frontend_css', plugins_url('alabaster-sermon-manager/css/bootstrap.min.css'));
+	wp_enqueue_script('alabaster_sermonmanager_frontend_js', plugins_url('alabaster-sermon-manager/js/bootstrap.min.js'), array('jquery'), '', true);
+	wp_enqueue_script('font_awesome', 'https://use.fontawesome.com/e8cbf9f68e.js', array('jquery'), '', true);
 	  if ( is_singular( 'alabaster-sermons' ) ){
-	  	wp_enqueue_script('alabaster_sermonmanager_audiocontrols_js', plugins_url('alabaster-sermonmanager/js/alabaster-sermonmanager-audio-controls.js'), array('jquery'), '', true);
+	  	wp_enqueue_script('alabaster_sermonmanager_audiocontrols_js', plugins_url('alabaster-sermon-manager/js/alabaster-sermonmanager-audio-controls.js'), array('jquery'), '', true);
 	  }
 }
 

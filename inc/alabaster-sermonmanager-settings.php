@@ -20,8 +20,9 @@ function add_settings_page() {
 add_action('admin_menu', 'add_settings_page');
 
 function alabaster_sermonmanager_admin_styles_and_scripts(){
-	wp_enqueue_style('alabaster_sermonmanager_frontend_css', plugins_url('alabaster-sermonmanager/css/bootstrap.min.css'));
-	wp_enqueue_style('alabaster_sermonmanager_audioskin_css', plugins_url('alabaster-sermonmanager/css/alabaster-sermonmanager-audio-skin.css'));
+	wp_enqueue_style('alabaster_sermonmanager_frontend_css', plugins_url('alabaster-sermon-manager/css/bootstrap.min.css'));
+	wp_enqueue_style('alabaster_sermonmanager_audioskin_css', plugins_url('alabaster-sermon-manager/css/alabaster-sermonmanager-audio-skin.css'));
+    wp_enqueue_script('font_awesome', 'https://use.fontawesome.com/e8cbf9f68e.js', array('jquery'), '', true);
 }
 
 
