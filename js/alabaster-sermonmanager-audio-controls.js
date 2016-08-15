@@ -5,22 +5,14 @@ var player = document.getElementById('alabaster-sermoncontrol-audio');
 var playBtn = document.getElementById('asm-play-button');
 var playSymbol = document.getElementById('button-symbol');
 //var pauseBtn = document.getElementById('alabaster-sermoncontrol-audio-pause');
-var seekBar = document.getElementById('alabaster-sermoncontrol-audio-seekbar');
+var seekBar = document.getElementById('asm-content-scrub-bar');
+var positionBar = document.getElementById('asm-content-scrub-bar-current');
 var displayCurrentTime = document.getElementById('asm-scrub-position-time');
 var displayDuration = document.getElementById('asm-scrub-length');
 
 
-
 //Play the sermon
 
-/*playBtn.addEventListener('click', function(e){
-	player.play();
-});
-
-//Pause the sermon
-pauseBtn.addEventListener('click', function(e){
-	player.pause();
-});*/
 
 playBtn.addEventListener('click', playSermon);
 
@@ -36,40 +28,43 @@ function playSermon(){
 	}
 }
 
-
-//displayDuration.innerHTML = Math.floor(player.currentTime) + '/' + Math.floor(player.duration);
-
-
 //Play video at seekbar point
-/*seekBar.addEventListener('change', function(e){
-
-var time = player.duration * (seekBar.value / 100);
+seekBar.addEventListener('click', function(e){
+var percent = e.offsetX / this.offsetWidth;
+var time = percent * player.duration;
 player.currentTime = time;
 });
 
 
 //Move the seekbar according to sermon time
-player.addEventListener('timeupdate', function(e){
-		var value = 100 * (player.currentTime / player.duration);
+player.addEventListener('timeupdate', updateProgress, false);
 
- 	seekBar.value = value;
-
-	});
-
-
+function updateProgress(){
+	var value = 0;
+	if (player.currentTime > 0){
+		value = Math.floor((100 / player.duration) * player.currentTime);
+	}
+	positionBar.style.width = value + "%";
+}
 
 //Pause the sermon when scrubbing
 seekBar.addEventListener('mousedown', function(e){
 player.pause();
+playSymbol.innerHTML = " ";
+playSymbol.innerHTML = "play_arrow";
 
 });
 
 //Play the video after scrubbing finished
-seekBar.addEventListener('mouseup', function(e){
+seekBar.addEventListener('drag', function(e){
 player.pause();
-playBtn.className = " ";
-		playBtn.className = "glyphicon glyphicon-play";
-
+playSymbol.innerHTML = " ";
+playSymbol.innerHTML = "play_arrow";
+var percent = e.offsetX / this.offsetWidth;
+var time = percent * player.duration;
+player.currentTime = time;
+value = Math.floor(time);
+positionBar.style.width = value + "%";
 });
 
 /*

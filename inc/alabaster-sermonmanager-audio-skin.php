@@ -17,7 +17,7 @@ if($style_options != '' ){
  $sermonSeries = get_the_term_list($post->ID, 'series');
 
  	 $audio = "<audio  id='alabaster-sermoncontrol-audio'>";
- 	 $audio = $audio . "<source id='alabaster-sermoncontrol-audioSource' src='" . get_custom_field('meta-image') . "' type='audio/mp3'/>Your browser does not support the audio element. Please update browser.";
+ 	 $audio = $audio . "<source id='alabaster-sermoncontrol-audioSource' src='" . $audioFile . "' type='audio/mp3'/>Your browser does not support the audio element. Please update browser.";
  	 $audio = $audio . "</audio>";
    $audio = $audio . "<div id='asm-player-body' class='clearfix'>";
    $audio = $audio . "<div id='asm-cover-image' style='background-image:url(". $feat_image .");'>";
@@ -50,8 +50,8 @@ if($style_options != '' ){
    $audio = $audio . "<span id='asm-scrub-position-time'>00:00</span>";
    //Close position container
    $audio = $audio . "</div>";
-   $audio = $audio . "<span id='asm-content-scrub-bar' class='asm-sec-bkg-color' style='width:70%;'>";
-   $audio = $audio . "<span id='asm-content-scrub-bar-current'class='asm-prime-bkg-color' style='width:25%'></span>";
+   $audio = $audio . "<span id='asm-content-scrub-bar' class='asm-sec-bkg-color' style='width:470px'>";
+   $audio = $audio . "<span id='asm-content-scrub-bar-current'class='asm-prime-bkg-color' style='width:0px'></span>";
    //Close Scrub bar
    $audio = $audio . "</span>";
    $audio = $audio . "<div id='asm-scrub-length-container' class='asm-sec-color'>";
