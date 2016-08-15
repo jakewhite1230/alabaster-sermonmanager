@@ -2,13 +2,12 @@
 //Define the player
 var player = document.getElementById('alabaster-sermoncontrol-audio');
 //play when play is clicked
-var playBtn = document.getElementById('alabaster-sermoncontrol-audio-play');
+var playBtn = document.getElementById('asm-play-button');
+var playSymbol = document.getElementById('button-symbol');
 //var pauseBtn = document.getElementById('alabaster-sermoncontrol-audio-pause');
 var seekBar = document.getElementById('alabaster-sermoncontrol-audio-seekbar');
-var volume = document.getElementById('alabaster-sermoncontrol-audio-volume');
-var volumeBtn = document.getElementById('alabaster-sermoncontrol-audio-volume-button');
-var displayCurrentTime = document.getElementById('alabaster-sermoncontrol-audio-currentTime');
-var displayDuration = document.getElementById('alabaster-sermoncontrol-audio-duration');
+var displayCurrentTime = document.getElementById('asm-scrub-position-time');
+var displayDuration = document.getElementById('asm-scrub-length');
 
 
 
@@ -28,12 +27,12 @@ playBtn.addEventListener('click', playSermon);
 function playSermon(){
 	if(player.paused){
 		player.play();
-		playBtn.className = " ";
-		playBtn.className = "glyphicon glyphicon-pause";
+		playSymbol.innerHTML = " ";
+		playSymbol.innerHTML = "pause";
 	}else{
 		player.pause();
-		playBtn.className = " ";
-		playBtn.className = "glyphicon glyphicon-play";
+		playSymbol.innerHTML = " ";
+		playSymbol.innerHTML = "play_arrow";
 	}
 }
 
@@ -42,7 +41,7 @@ function playSermon(){
 
 
 //Play video at seekbar point
-seekBar.addEventListener('change', function(e){
+/*seekBar.addEventListener('change', function(e){
 
 var time = player.duration * (seekBar.value / 100);
 player.currentTime = time;
@@ -55,7 +54,7 @@ player.addEventListener('timeupdate', function(e){
 
  	seekBar.value = value;
 
-	}); 
+	});
 
 
 
@@ -71,7 +70,7 @@ player.pause();
 playBtn.className = " ";
 		playBtn.className = "glyphicon glyphicon-play";
 
-}); 
+});
 
 /*
 //Add volume control
@@ -91,7 +90,7 @@ seekBar.addEventListener('change', function(e){
 
 
 jQuery(document).ready(function($) {
- 
+
  $(volume).hide();
 
 $(volumeBtn).click(function(){
@@ -100,7 +99,7 @@ $(volumeBtn).click(function(){
 
 });
 
-}) 
+})
 
 */
 
@@ -124,10 +123,10 @@ player.addEventListener('timeupdate', function(){
 	if (current_hours   < 10) {current_hours   = "0"+current_hours;}
     if (current_minutes < 10) {current_minutes = "0"+current_minutes;}
     if (current_seconds < 10) {current_seconds = "0"+current_seconds;}
-    var current_time    = current_hours+':'+current_minutes+':'+current_seconds;
+		if(current_hours <= 0){
+			var current_time = current_minutes+':'+current_seconds;
+		}else{
+				var current_time = current_hours+':'+current_minutes+':'+current_seconds;
+			}
 displayCurrentTime.innerHTML = current_time;
 })
-
-
-
-
