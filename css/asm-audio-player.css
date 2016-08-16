@@ -157,9 +157,6 @@
 	 margin: 0 auto;
 	 width: 0;
 	 height: 0;
-	 border-top: solid 5px <?php echo $secondary_style;?>;
-	 border-left: solid 5px transparent;
-	 border-right: solid 5px transparent;
 }
 
 #asm-player-body .clearfix:after {

@@ -84,4 +84,9 @@ if($style_options != '' ){
 .asm-sec-color{
 	color:<?php echo $secondary_style;?>;
 }
+#asm-scrubbing-tooltip:after{
+	 border-top: solid 5px <?php echo $secondary_style;?>;
+	 border-left: solid 5px transparent;
+	 border-right: solid 5px transparent;
+}
 </style>
