@@ -4,12 +4,13 @@ var player = document.getElementById('alabaster-sermoncontrol-audio');
 //play when play is clicked
 var playBtn = document.getElementById('asm-play-button');
 var playSymbol = document.getElementById('button-symbol');
+var scrubbingTooltip = document.getElementById('asm-scrubbing-tooltip');
 //var pauseBtn = document.getElementById('alabaster-sermoncontrol-audio-pause');
 var seekBar = document.getElementById('asm-content-scrub-bar');
 var positionBar = document.getElementById('asm-content-scrub-bar-current');
 var displayCurrentTime = document.getElementById('asm-scrub-position-time');
 var displayDuration = document.getElementById('asm-scrub-length');
-
+var playerBody = document.getElementById('asm-player-body');
 
 //Play the sermon
 
@@ -42,61 +43,70 @@ player.addEventListener('timeupdate', updateProgress, false);
 function updateProgress(){
 	var value = 0;
 	if (player.currentTime > 0){
-		value = Math.floor((100 / player.duration) * player.currentTime);
+		value = (100 / player.duration) * player.currentTime;
 	}
 	positionBar.style.width = value + "%";
 }
 
+var clicking = false;
 //Pause the sermon when scrubbing
 seekBar.addEventListener('mousedown', function(e){
-player.pause();
-playSymbol.innerHTML = " ";
-playSymbol.innerHTML = "play_arrow";
-
+	clicking = true;
+	var percent = e.offsetX / this.offsetWidth;
+	var time = percent * player.duration;
+	if (player.currentTime > 0){
+		var value = (100 / player.duration) * player.currentTime;
+	}
+	player.currentTime = time;
+	player.pause();
+	playSymbol.innerHTML = " ";
+	playSymbol.innerHTML = "play_arrow";
+	scrubbingTooltip.style.display = 'block';
+	scrubbingTooltip.style.left = (positionBar.clientWidth - (scrubbingTooltip.clientWidth / 2)) + "px";
+	seekBar.style.cursor = "default";
 });
 
+
+seekBar.addEventListener('contextmenu', function(e){
+	clicking = false;
+	scrubbingTooltip.style.display = 'none';
+});
+seekBar.addEventListener('mouseleave', function(e){
+	clicking = false;
+	scrubbingTooltip.style.display = 'none';
+});
+
+
+seekBar.addEventListener('mousemove', function(e){
+if(clicking == false){
+	return;
+} else{
+	var percent = e.offsetX / this.offsetWidth;
+	var time = percent * player.duration;
+	player.currentTime = time;
+	if (player.currentTime > 0){
+		value = (100 / player.duration) * player.currentTime;
+	}
+	positionBar.style.width = value + "%";
+	scrubbingTooltip.style.display = 'block';
+  scrubbingTooltip.style.left = (positionBar.clientWidth - (scrubbingTooltip.clientWidth / 2)) + "px";
+	seekBar.style.cursor = "default";
+	}
+
+});
 //Play the video after scrubbing finished
-seekBar.addEventListener('drag', function(e){
-player.pause();
-playSymbol.innerHTML = " ";
-playSymbol.innerHTML = "play_arrow";
+seekBar.addEventListener('mouseup', function(e){
+clicking = false;
 var percent = e.offsetX / this.offsetWidth;
 var time = percent * player.duration;
 player.currentTime = time;
-value = Math.floor(time);
-positionBar.style.width = value + "%";
+console.log(time);
+scrubbingTooltip.style.display = 'none';
+player.play();
+playSymbol.innerHTML = " ";
+playSymbol.innerHTML = "pause";
 });
 
-/*
-//Add volume control
-volume.addEventListener('change', function(e){
-	player.volume = volume.value;
-})
-
-seekBar.addEventListener('change', function(e){
-
-	if(player.play){
-		playBtn.className = " ";
-		playBtn.className = "glyphicon glyphicon-pause"
-	}
-
-})
-
-
-
-jQuery(document).ready(function($) {
-
- $(volume).hide();
-
-$(volumeBtn).click(function(){
-
-	$(volume).fadeToggle('show');
-
-});
-
-})
-
-*/
 
 player.addEventListener('loadeddata', function(e){
 	var duration_sec_num = parseInt(this.duration, 10); // don't forget the second param
@@ -124,4 +134,5 @@ player.addEventListener('timeupdate', function(){
 				var current_time = current_hours+':'+current_minutes+':'+current_seconds;
 			}
 displayCurrentTime.innerHTML = current_time;
+scrubbingTooltip.innerHTML = current_time;
 })

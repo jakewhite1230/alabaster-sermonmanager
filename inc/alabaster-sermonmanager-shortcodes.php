@@ -64,8 +64,6 @@ function my_the_content_filter( $content ) {
     	$sermonSeries = get_the_term_list($post->ID, 'series');
     	//$audio = "<audio id='alabaster-sermoncontrol-audio'> <source src='".get_custom_field('meta-image') ."'/> Your browser does not support the audio element. Please update browser.</audio>";
     	include('alabaster-sermonmanager-audio-skin.php');
-
-    	$output = "<p>" . $sermonDate . " | " . $sermonSpeaker . " | " . $sermonSeries ."</p>";
 		$output = $output . $audio;
 
 		$content = $output . $content;

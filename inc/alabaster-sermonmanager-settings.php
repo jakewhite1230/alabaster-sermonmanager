@@ -5,7 +5,7 @@ $style_options = array();
 
 function add_settings_page() {
     $page = add_submenu_page(
-        'edit.php?post_type=sermons', 
+        'edit.php?post_type=sermons',
         'Options',
         'Settings',
         'manage_options',
@@ -20,9 +20,10 @@ function add_settings_page() {
 add_action('admin_menu', 'add_settings_page');
 
 function alabaster_sermonmanager_admin_styles_and_scripts(){
-	wp_enqueue_style('alabaster_sermonmanager_frontend_css', plugins_url('alabaster-sermon-manager/css/bootstrap.min.css'));
-	wp_enqueue_style('alabaster_sermonmanager_audioskin_css', plugins_url('alabaster-sermon-manager/css/alabaster-sermonmanager-audio-skin.css'));
-    wp_enqueue_script('font_awesome', 'https://use.fontawesome.com/e8cbf9f68e.js', array('jquery'), '', true);
+	wp_enqueue_style('alabaster_sermonmanager_audioskin_css', plugins_url('alabaster-sermon-manager/css/alabaster-sermonmanager-audio-player.css'));
+  wp_enqueue_style('source_sans_pro','https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+	wp_enqueue_style('material','https://fonts.googleapis.com/icon?family=Material+Icons');
+	wp_enqueue_style('socialicons','https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css');
 }
 
 
@@ -35,23 +36,21 @@ function alabaster_sermonmanager_options_page() {
     global $plugins_url;
     global $style_options;
 
-    $seekbar_style = "#DC3522";
-    $dock_color_style = "#1e1e20";
-    $button_color_style = "#ffffff";
+    $primary_style = "#f05555";
+    $secondary_style = "#656565";
 
     if (isset($_POST['alabaster-sermonmanager-colorSubmit'])){
 
         $hidden_field = esc_html($_POST['alabaster-sermonmanager-colorSubmit']);
 
         if($hidden_field == 'Y'){
-            $alabaster_sermonmanager_seekbar_color = esc_html($_POST['alabaster-sermonmanager-seekbar-color']);
-            $alabaster_sermonmanager_dock_color = esc_html($_POST['alabaster-sermonmanager-dock-color']);
-            $alabaster_sermonmanager_button_color = esc_html($_POST['alabaster-sermonmanager-button-color']);
+            $alabaster_sermonmanager_primary_color = esc_html($_POST['alabaster-sermonmanager-primary-color']);
+            $alabaster_sermonmanager_secondary_color = esc_html($_POST['alabaster-sermonmanager-secondary-color']);
 
 
-            $style_options['alabaster-sermonmanager-seekbar-color'] = $alabaster_sermonmanager_seekbar_color;
-            $style_options['alabaster-sermonmanager-dock-color'] = $alabaster_sermonmanager_dock_color;
-            $style_options['alabaster-sermonmanager-button-color'] = $alabaster_sermonmanager_button_color;
+
+            $style_options['alabaster-sermonmanager-primary-color'] = $alabaster_sermonmanager_primary_color;
+            $style_options['alabaster-sermonmanager-secondary-color'] = $alabaster_sermonmanager_secondary_color;
             $style_options['last-updated'] = time();
 
             update_option( 'alabaster-sermonmanager-options', $style_options );
@@ -63,9 +62,8 @@ function alabaster_sermonmanager_options_page() {
      $style_options = get_option('alabaster-sermonmanager-options');
 
         if($style_options != '' ){
-            $seekbar_style = $style_options['alabaster-sermonmanager-seekbar-color'];
-            $dock_color_style = $style_options['alabaster-sermonmanager-dock-color'];
-            $button_color_style = $style_options['alabaster-sermonmanager-button-color'];
+            $primary_style = $style_options['alabaster-sermonmanager-primary-color'];
+            $secondary_style = $style_options['alabaster-sermonmanager-secondary-color'];
             $alabaster_sermonmanager_lastUpdate = $style_options['last-updated'];
 
         }
