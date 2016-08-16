@@ -50,7 +50,7 @@ if($style_options != '' ){
    $audio = $audio . "<span id='asm-scrub-position-time'>00:00</span>";
    //Close position container
    $audio = $audio . "</div>";
-   $audio = $audio . "<span id='asm-content-scrub-bar' class='asm-sec-bkg-color' style='width:75%'>";
+   $audio = $audio . "<span id='asm-content-scrub-bar' class='asm-sec-bkg-color'>";
 	 $audio = $audio . "<span id='asm-scrubbing-tooltip' class='asm-sec-bkg-color'>00:00</span>";
    $audio = $audio . "<span id='asm-content-scrub-bar-current'class='asm-prime-bkg-color' style='width:0px'></span>";
    //Close Scrub bar

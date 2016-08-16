@@ -97,7 +97,6 @@
 	margin-top: 0px;
 }
 #asm-content-scrub-controls{
-	line-height: 0.3;
 	width: 100%;
 	position: absolute;
 	bottom: 25px;
@@ -114,20 +113,21 @@
 #asm-scrub-length-container{
 	width: auto;
 	text-align: center;
-	cursor: arrow;
 }
 
 #asm-scrub-pos-container{
 	margin-right: 10px;
+  line-height: 0.6;
 }
 #asm-scrub-length-container{
 	margin-left: 10px;
+  line-height: 0.6;
 }
 
 
 #asm-content-scrub-bar,
 #asm-content-scrub-bar-current{
-	height: 7px;
+	height: 10px;
 	display: block;
 	border-radius: 30px;
 }
@@ -172,3 +172,89 @@
 * html #asm-player-body .clearfix { height: 1%; }
 #asm-player-body .clearfix { display: block; }
 /* close commented backslash hack */
+#asm-content-scrub-bar{
+    width: 75%;
+}
+@media(max-width:991px){
+  #asm-cover-image{
+    width: 25%;
+  }
+  #asm-body-content{
+    width: 65%;
+  }
+  #asm-content-scrub-bar{
+      width: 60%;
+  }
+	#asm-play-button{
+		transition: none;
+	}
+
+
+
+}
+
+@media(max-width:767px){
+	#asm-player-body{
+		padding-bottom: 20px;
+	}
+	#asm-cover-image {
+    width: 100%;
+		float: none;
+	}
+
+	#asm-play-button{
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: -30px;
+		top:auto;
+		transition: none;
+	}
+	#asm-body-content{
+		margin: 0px;
+    display: block;
+    width: 100%;
+    margin-top: 40px;
+		float: none;
+  }
+	#asm-content-buttons {
+    position: relative;
+    width: 100%;
+    padding: 0px 10px;
+		top: auto;
+	}
+	#asm-content-info{
+		padding: 10px;
+		margin-bottom: 25px;
+		position: relative;
+		top: auto;
+		transform: translateY(0%);
+	}
+	#asm-content-title,
+	#asm-content-captions{
+		text-align: center;
+	}
+	#asm-scrub-pos-container{
+		float: left;
+		padding-left: 10px;
+	}
+	#asm-scrub-length-container{
+		float: right;
+		padding-right: 10px;
+	}
+	#asm-content-scrub-bar{
+		width: 100%;
+		position: absolute;
+		top:-20px;
+		border-radius: 0px;
+	}
+	#asm-content-scrub-bar-current{
+		border-radius: 0px;
+	}
+	#asm-scrubbing-tooltip{
+		padding: 3px;
+	}
+	#asm-content-scrub-controls{
+		position: relative;
+		bottom: auto;
+	}
+}

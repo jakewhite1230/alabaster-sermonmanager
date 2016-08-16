@@ -117,6 +117,11 @@ player.addEventListener('loadeddata', function(e){
     if (duration_minutes < 10) {duration_minutes = "0"+duration_minutes;}
     if (duration_seconds < 10) {duration_seconds = "0"+duration_seconds;}
     var duration_time    = duration_hours+':'+duration_minutes+':'+duration_seconds;
+		if(duration_hours <= 0){
+			var duration_time = duration_minutes+':'+duration_seconds;
+		}else{
+				var duration_time = duration_hours+':'+duration_minutes+':'+duration_seconds;
+			}
     displayDuration.innerHTML = duration_time;
 })
 
