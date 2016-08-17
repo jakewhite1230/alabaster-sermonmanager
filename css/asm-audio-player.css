@@ -196,6 +196,7 @@
 @media(max-width:767px){
 	#asm-player-body{
 		padding-bottom: 20px;
+		width: 100%;
 	}
 	#asm-cover-image {
     width: 100%;
