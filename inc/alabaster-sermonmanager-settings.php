@@ -5,7 +5,7 @@ $style_options = array();
 
 function add_settings_page() {
     $page = add_submenu_page(
-        'edit.php?post_type=sermons',
+        'edit.php?post_type=sermon',
         'Options',
         'Settings',
         'manage_options',

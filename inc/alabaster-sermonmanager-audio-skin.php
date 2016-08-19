@@ -89,4 +89,7 @@ if($style_options != '' ){
 	 border-left: solid 5px transparent;
 	 border-right: solid 5px transparent;
 }
+#asm-button-dwnld:hover{
+	color: <?php echo $primary_style;?>;
+}
 </style>

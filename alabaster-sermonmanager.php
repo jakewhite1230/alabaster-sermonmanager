@@ -38,15 +38,16 @@ include('inc/alabaster-sermonmanager-taxonomy-speaker-image.php');
 include('inc/alabaster-sermonmanager-shortcodes.php');
 
 function alabaster_sermonmanager_frontend_styles_and_scripts(){
-	//wp_enqueue_style('alabaster_sermonmanager_frontend_css', plugins_url('alabaster-sermon-manager/css/bootstrap.min.css'));
-	//wp_enqueue_script('alabaster_sermonmanager_frontend_js', plugins_url('alabaster-sermon-manager/js/bootstrap.min.js'), array('jquery'), '', true);
-	  if ( is_singular( 'sermons' ) ){
+	wp_enqueue_style('alabaster_sermonmanager_bootstrap_css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+	wp_enqueue_script('alabaster_sermonmanager_bootstrap_js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', array('jquery'), '', true);
+	  if ( is_singular( 'sermon' ) ){
 	  	wp_enqueue_script('alabaster_sermonmanager_audiocontrols_js', plugins_url('alabaster-sermon-manager/js/alabaster-sermonmanager-audio-controls.js'), array('jquery'), '', true);
 			wp_enqueue_style('alabaster_sermonmanager_frontend_css', plugins_url('alabaster-sermon-manager/css/asm-audio-player.css'));
 			wp_enqueue_style('source_sans_pro','https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 			wp_enqueue_style('material','https://fonts.googleapis.com/icon?family=Material+Icons');
 			wp_enqueue_style('socialicons','https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css');
 	  }
+
 }
 
 add_action('wp_enqueue_scripts', 'alabaster_sermonmanager_frontend_styles_and_scripts');

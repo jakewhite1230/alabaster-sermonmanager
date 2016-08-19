@@ -45,7 +45,7 @@ function alabaster_sermonmanager_sermons_shortcode($atts, $content = null) {
 
 	ob_start();
 
-	require('archive-sermons.php');
+	require('archive.php');
 
 	$content = ob_get_clean();
 
@@ -57,7 +57,7 @@ add_shortcode('alabaster_sermonmanager_sermons', 'alabaster_sermonmanager_sermon
 add_filter( 'the_content', 'my_the_content_filter', 20 );
 function my_the_content_filter( $content ) {
 
-    if ( is_singular( 'sermons' ) ){
+    if ( is_singular( 'sermon' ) ){
 
     	$sermonDate = get_custom_field("sermon_date");
     	$sermonSpeaker = get_the_term_list($post->ID, 'speakers');

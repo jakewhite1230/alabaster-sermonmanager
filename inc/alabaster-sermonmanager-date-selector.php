@@ -5,7 +5,7 @@ function date_field() {
         'date_field',
         __( 'Sermon Date', 'myplugin_textdomain' ),
         'date_field_content',
-        'sermons',
+        'sermon',
         'normal',
         'high'
     );

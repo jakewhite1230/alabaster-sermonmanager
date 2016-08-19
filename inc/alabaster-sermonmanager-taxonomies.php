@@ -3,7 +3,7 @@
 function series_taxonomy() {
     register_taxonomy(
         'series',
-        'sermons',
+        'sermon',
         array(
             'hierarchical' => true,
             'label' => 'Series',
@@ -20,7 +20,7 @@ add_action( 'init', 'series_taxonomy');
 function speaker_taxonomy() {
     register_taxonomy(
         'speakers',
-        'sermons',
+        'sermon',
         array(
             'hierarchical' => true,
             'label' => 'Speaker',

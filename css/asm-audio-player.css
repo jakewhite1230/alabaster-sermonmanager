@@ -72,8 +72,6 @@
 }
 #asm-button-dwnld:hover{
 	transition: all ease-in 0.3s;
-	/*Replace with prime color*/
-	color: <?php echo $primary_style;?>;
 }
 
 #asm-share-twitter{
@@ -146,7 +144,6 @@
 	display:none;
 	left:-23.5px;
 	border-radius: 5px;
-	line-height: 0.6;
 }
 
 #asm-scrubbing-tooltip:after{
@@ -197,7 +194,6 @@
 @media(max-width:767px){
 	#asm-player-body{
 		padding-bottom: 20px;
-		width: 100%;
 	}
 	#asm-cover-image {
     width: 100%;

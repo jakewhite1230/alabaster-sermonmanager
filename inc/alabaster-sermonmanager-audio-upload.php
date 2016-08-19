@@ -5,7 +5,7 @@ function audio_upload() {
         'audio_upload',
         __( 'Sermon Audio', 'prfx-textdomain' ),
         'audio_upload_content',
-        'sermons',
+        'sermon',
         'normal',
         'high'
     );

@@ -3,7 +3,7 @@
 
 		<?php
 
-			$args = array('post_type' => 'sermons');
+			$args = array('post_type' => 'sermon');
 			$the_query = new WP_Query($args);
 			if($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
 			 $thumbnail_src = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
