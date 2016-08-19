@@ -70,6 +70,7 @@
 					position: relative;
 					min-height: 185px;
 					height: auto;
+					margin-bottom: 10px;
 				}
 
 				.asm-tax-body a:hover{
@@ -128,5 +129,47 @@
 					opacity: 0.4;
 				}
 
-				@media(max-width:76)
+				@media(max-width:767px){
+					.asm-tax-body{
+						margin: auto;
+						display: block;
+						position: relative;
+						padding: 10px;
+						margin-bottom: 10px;
+					}
+
+					.asm-tax-body p{
+					text-align: center;
+					}
+
+					.asm-tax-name{
+						text-align: center;
+					}
+					.asm-tax-profile-image{
+						width: 50%;
+						height: auto;
+						float: none;;
+	    			margin: 0px auto;
+						margin-bottom: 15px;
+						display: block;
+					}
+
+					.asm-tax-content{
+						float: none;;
+						width: 100%;
+					}
+					.asm-tax-name,
+					.asm-listings-view-more{
+						 width: 100%;
+					 }
+
+
+					.asm-tax-hr{
+						margin: 0 auto;
+						display: block;
+						width: 75%;
+					}
+
+
+				}
 			</style>
