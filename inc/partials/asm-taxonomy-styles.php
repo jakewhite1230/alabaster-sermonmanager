@@ -49,6 +49,11 @@
     color: <?php echo $secondary_style; ?>;
   }
 
+.sermons-shortcode .asm-tax-name:hover{
+  text-decoration: none;
+  color: <?php echo $secondary_style; ?>;
+}
+
   .asm-sermon-listing-link:hover{
     color: <?php echo $primary_style; ?>;
   }

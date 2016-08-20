@@ -55,6 +55,47 @@ function alabaster_sermonmanager_sermons_shortcode($atts, $content = null) {
 add_shortcode('alabaster_sermonmanager_sermons', 'alabaster_sermonmanager_sermons_shortcode');
 
 add_filter( 'the_content', 'my_the_content_filter', 20 );
+
+//This will add a button to pages for shortcode
+add_action('init', 'add_asm_shortcode_button_to_pages');
+function add_asm_shortcode_button_to_pages() {
+
+   if ( current_user_can('edit_pages') )
+   {
+     add_filter('mce_external_plugins', 'register_asm_shortcode_button');
+     add_filter('mce_buttons', 'add_asm_shortcode_button');
+   }
+}
+
+// inlcude the js for tinymce
+function register_asm_shortcode_button( $plugin_array ) {
+
+    $plugin_array['asm_button_location'] = plugins_url('alabaster-sermon-manager/js/asm-shortcodes.js');
+    return $plugin_array;
+
+}
+
+// Add the button key for address via JS
+function add_asm_shortcode_button( $buttons ) {
+
+    array_push( $buttons, shortcodes );
+    return $buttons;
+
+}
+
+add_action( 'admin_head', 'add_asm_shortcode_button');
+
+
+
+
+
+
+
+
+
+
+
+
 function my_the_content_filter( $content ) {
 
     if ( is_singular( 'sermon' ) ){

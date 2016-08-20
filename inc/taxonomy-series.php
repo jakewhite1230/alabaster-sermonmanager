@@ -34,8 +34,7 @@
 
 						<?php	$args = array(
 										'post_type' => 'sermon',
-										'series' => $singular->name,
-										'posts_per_page' => 5
+										'series' => $singular->name
 								);
 								//  assigning variables to the loop
 									$wp_query = new WP_Query($args);
@@ -45,13 +44,6 @@
 										<p class="asm-tax-sermon-listings"><a class="asm-sermon-listing-link" href="<?php the_permalink();?>"><?php the_title();?></a></p>
 										<hr class="asm-tax-hr">
 									<?php endwhile;?>
-									<?php
-										if($sermonCount > 1){ ?>
-												<p style="margin:20px 0px;">
-													<a class='asm-listings-view-more' href="<?php echo esc_attr(get_term_link($singular, $taxonomy)); ?>" title="<?php echo sprintf( __( "View all posts in %s" ), $singular->name ); ?>">
-													View More
-												</a></p>
-									<?php	}?>
 										<?php wp_reset_query();?>
 					</div>
 				</div>

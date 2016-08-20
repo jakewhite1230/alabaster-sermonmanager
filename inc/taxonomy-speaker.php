@@ -36,7 +36,7 @@
 						<?php	$args = array(
 										'post_type' => 'sermon',
 										'speakers' => $speaker->name,
-										'posts_per_page' => 5
+										'posts_per_page' => 3
 								);
 								//  assigning variables to the loop
 									$wp_query = new WP_Query($args);
@@ -47,7 +47,7 @@
 										<hr class="asm-tax-hr">
 									<?php endwhile;?>
 									<?php
-										if($sermonCount > 1){ ?>
+										if($sermonCount >= 3){ ?>
 												<p style="margin:20px 0px;">
 													<a class='asm-listings-view-more' href="<?php echo esc_attr(get_term_link($speaker, $taxonomy)); ?>" title="<?php echo sprintf( __( "View all posts in %s" ), $speaker->name ); ?>">
 													View More
@@ -59,4 +59,4 @@
 			<?php }
 		}
 			?>
-<?php include('partialsasm-taxonomy-styles.php');?>
+<?php include('partials/asm-taxonomy-styles.php');?>
