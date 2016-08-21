@@ -59,8 +59,9 @@ add_filter( 'the_content', 'my_the_content_filter', 20 );
 //This will add a button to pages for shortcode
 add_action('init', 'add_asm_shortcode_button_to_pages');
 function add_asm_shortcode_button_to_pages() {
-
-   if ( current_user_can('edit_pages') )
+	$asmPostId = $_REQUEST['post'];
+	$asmPostType = get_post_type($asmPostId);
+   if ($_REQUEST['post_type'] == "page" || $asmPostType == "page")
    {
      add_filter('mce_external_plugins', 'register_asm_shortcode_button');
      add_filter('mce_buttons', 'add_asm_shortcode_button');
