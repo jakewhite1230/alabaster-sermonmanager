@@ -14,7 +14,7 @@ function alabaster_sermonmanager() {
         'not_found' => _x( 'No sermons found', 'sermon' ),
         'not_found_in_trash' => _x( 'No sermons found in Trash', 'sermon' ),
         'parent_item_colon' => _x( 'Parent Sermon:', 'sermon' ),
-        'menu_name' => _x( 'Sermon', 'sermon' ),
+        'menu_name' => _x( 'Sermons', 'sermon' ),
     );
 
     $args = array(
@@ -25,7 +25,7 @@ function alabaster_sermonmanager() {
         'taxonomies' => array( 'category' ),
         'public' => true,
         'show_ui' => true,
-        'show_in_menu' => true,
+        'show_in_menu' => 'sermon-options',
         'menu_position' => 5,
         'menu_icon' => 'dashicons-controls-volumeon',
         'show_in_nav_menus' => true,

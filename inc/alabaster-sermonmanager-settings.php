@@ -3,11 +3,10 @@
 $plugins_url = WP_PLUGIN_URL . '/alabaster-sermonmanager';
 $style_options = array();
 
-function add_settings_page() {
-    $page = add_submenu_page(
-        'edit.php?post_type=sermon',
+function add_asm_menu_page() {
+    $page = add_menu_page(
         'Options',
-        'Settings',
+        'Alabaster Sermons',
         'manage_options',
         'sermon-options',
         'alabaster_sermonmanager_options_page' );
@@ -16,11 +15,12 @@ function add_settings_page() {
 
 
 }
+//Add settings under the Alabaster Sermons Menu Item
+add_action('admin_menu', 'add_asm_menu_page');
 
-add_action('admin_menu', 'add_settings_page');
 
 function alabaster_sermonmanager_admin_styles_and_scripts(){
-	wp_enqueue_style('alabaster_sermonmanager_audioskin_css', plugins_url('alabaster-sermon-manager/css/alabaster-sermonmanager-audio-player.css'));
+	wp_enqueue_style('alabaster_sermonmanager_audioskin_css', plugins_url('alabaster-sermon-manager/css/asm-settings-page.css'));
   wp_enqueue_style('source_sans_pro','https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 	wp_enqueue_style('material','https://fonts.googleapis.com/icon?family=Material+Icons');
 	wp_enqueue_style('socialicons','https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css');

@@ -78,22 +78,11 @@ function register_asm_shortcode_button( $plugin_array ) {
 
 // Add the button key for address via JS
 function add_asm_shortcode_button( $buttons ) {
-
+		$buttons = array();
     array_push( $buttons, shortcodes );
     return $buttons;
 
 }
-
-add_action( 'admin_head', 'add_asm_shortcode_button');
-
-
-
-
-
-
-
-
-
 
 
 

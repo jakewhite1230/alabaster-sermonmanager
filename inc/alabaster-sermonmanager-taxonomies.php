@@ -11,7 +11,8 @@ function series_taxonomy() {
             'rewrite' => array(
                 'slug' => 'series',
                 'with_front' => false
-            )
+            ),
+            'show_in_menu'=>'true'
         )
     );
 }

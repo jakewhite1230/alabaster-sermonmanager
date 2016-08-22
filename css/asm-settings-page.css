@@ -1,7 +1,7 @@
 #asm-player-body{
 	background:#f5f5f5;
 	font-family: 'Source Sans Pro', sans-serif;
-	width: 75%;
+	width: 100%;
 	margin: auto;
 	display: block;
 	position: relative;
@@ -165,3 +165,110 @@
 * html #asm-player-body .clearfix { height: 1%; }
 #asm-player-body .clearfix { display: block; }
 /* close commented backslash hack */
+
+@media(max-width:1146px){
+  #asm-cover-image{
+    width: 25%;
+  }
+  #asm-body-content{
+    width: 65%;
+  }
+  #asm-content-scrub-bar{
+      width: 60%;
+  }
+	#asm-play-button{
+		transition: none;
+	}
+
+
+
+}
+
+@media(max-width:767px){
+	#asm-player-body{
+		padding-bottom: 20px;
+	}
+	#asm-cover-image {
+    width: 100%;
+		float: none;
+	}
+
+	#asm-play-button{
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: -30px;
+		top:auto;
+		transition: none;
+	}
+	#asm-body-content{
+		margin: 0px;
+    display: block;
+    width: 100%;
+    margin-top: 40px;
+		float: none;
+  }
+	#asm-content-buttons {
+    position: relative;
+    width: 100%;
+		top: auto;
+	}
+	#asm-content-info{
+		padding: 10px;
+		margin-bottom: 25px;
+		position: relative;
+		top: auto;
+		transform: translateY(0%);
+	}
+	#asm-content-title,
+	#asm-content-captions{
+		text-align: center;
+	}
+	#asm-scrub-pos-container{
+		float: left;
+		padding-left: 10px;
+	}
+	#asm-scrub-length-container{
+		float: right;
+		padding-right: 10px;
+	}
+	#asm-content-scrub-bar{
+		width: 100% !important;
+		position: absolute;
+		top:-20px;
+		border-radius: 0px;
+	}
+	#asm-content-scrub-bar-current{
+		border-radius: 0px;
+	}
+	#asm-scrubbing-tooltip{
+		padding: 3px;
+	}
+	#asm-content-scrub-controls{
+		position: relative;
+		bottom: auto;
+	}
+}
+
+
+.asm-settings-page-hero{
+	background-size: cover;
+	background-position: center center;
+	height: 400px;
+	position: relative;
+	margin-bottom: 25px;
+}
+
+#asm-settings-page-hero-logo{
+	width: 400px;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	margin: auto;
+	display: block;
+	text-align: center;
+	color: #fff;
+}
+#asm-settings-page-hero-logo img{
+	width: 100%;
+}
