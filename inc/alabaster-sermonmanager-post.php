@@ -25,7 +25,7 @@ function alabaster_sermonmanager() {
         'taxonomies' => array( 'category' ),
         'public' => true,
         'show_ui' => true,
-        'show_in_menu' => 'sermon-options',
+        'show_in_menu' => true,
         'menu_position' => 5,
         'menu_icon' => 'dashicons-controls-volumeon',
         'show_in_nav_menus' => true,
