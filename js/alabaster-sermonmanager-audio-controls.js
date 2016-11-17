@@ -11,6 +11,7 @@ var positionBar = document.getElementById('asm-content-scrub-bar-current');
 var displayCurrentTime = document.getElementById('asm-scrub-position-time');
 var displayDuration = document.getElementById('asm-scrub-length');
 var playerBody = document.getElementById('asm-player-body');
+var playerParent = document.getElementById('asm-player-body').parentElement;
 
 //Play the sermon
 
@@ -107,6 +108,12 @@ playSymbol.innerHTML = " ";
 playSymbol.innerHTML = "pause";
 });
 
+//Add class to playerBody on smaller parent container pages
+
+if(playerParent.clientWidth <= 857){
+	var playerClasses = playerBody.classList;
+	playerClasses.add('shrunken-player');
+}
 
 player.addEventListener('loadeddata', function(e){
 	var duration_sec_num = parseInt(this.duration, 10); // don't forget the second param

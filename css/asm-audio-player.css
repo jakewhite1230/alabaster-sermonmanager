@@ -173,6 +173,70 @@
 #asm-content-scrub-bar{
     width: 75%;
 }
+
+.shrunken-player{
+	padding-bottom: 20px !important;
+}
+.shrunken-player #asm-cover-image {
+	width: 100%;
+	float: none;
+}
+
+.shrunken-player #asm-play-button{
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: -30px;
+	top:auto;
+	transition: none;
+}
+.shrunken-player #asm-body-content{
+	margin: 0px;
+	display: block;
+	width: 100%;
+	margin-top: 40px;
+	float: none;
+}
+.shrunken-player #asm-content-buttons {
+	position: relative;
+	width: 100%;
+	padding: 0px 10px;
+	top: auto;
+}
+.shrunken-player #asm-content-info{
+	padding: 10px;
+	margin-bottom: 25px;
+	position: relative;
+	top: auto;
+	transform: translateY(0%);
+}
+.shrunken-player #asm-content-title,
+.shrunken-player #asm-content-captions{
+	text-align: center;
+}
+.shrunken-player #asm-scrub-pos-container{
+	float: left;
+	padding-left: 10px;
+}
+.shrunken-player #asm-scrub-length-container{
+	float: right;
+	padding-right: 10px;
+}
+.shrunken-player #asm-content-scrub-bar{
+	width: 100%;
+	position: absolute;
+	top:-20px;
+	border-radius: 0px;
+}
+.shrunken-player #asm-content-scrub-bar-current{
+	border-radius: 0px;
+}
+.shrunken-player #asm-scrubbing-tooltip{
+	padding: 3px;
+}
+.shrunken-player #asm-content-scrub-controls{
+	position: relative;
+	bottom: auto;
+}
 @media(max-width:991px){
   #asm-cover-image{
     width: 25%;
